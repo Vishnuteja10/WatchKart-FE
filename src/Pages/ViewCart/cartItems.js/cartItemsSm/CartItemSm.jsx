@@ -21,7 +21,7 @@ export default function CartItemSm() {
 
         setUserId(id)
         getCartItems();
-    }, [isCartEmpty]);
+    }, [isCartEmpty,numOfCartItems]);
 
     const calculateTotal = (items) => {
         let sum = 0;
@@ -32,6 +32,8 @@ export default function CartItemSm() {
     };
 
     const GET_CART_ITEMS = "https://watchkart-be.onrender.com/api/get-cartitems/";
+
+     const REMOVE_CART_ITEM = 'https://watchkart-be.onrender.com/api/removeItem/'
 
     const getCartItems = async () => {
         axios.get(GET_CART_ITEMS + id).then(
@@ -56,6 +58,26 @@ export default function CartItemSm() {
         );
     };
 
+    const removeItem = (e,user,item)=>{
+        e.preventDefault();
+        
+        axios.delete(REMOVE_CART_ITEM+user+'/'+item).then(
+          (response)=>{
+              if(response?.data?.success){
+               setNumOfCartItems(numOfCartItems - 1)
+                alert("item removed from cart")
+              }else{
+               alert("failed to remove item from cart")
+              }
+               
+          },(error)=>{
+              console.log(error)
+              alert("failed to remove item from cart")
+          }
+        )
+ 
+   }
+
 
     return (
         <div>
@@ -79,12 +101,16 @@ export default function CartItemSm() {
                                     <div className={style.header}>{rupeeSymbol} {item?.price}</div>
                                     <div>color : {item?.color}</div>
                                     <div>{item?.available}</div>
+                                    <div className={style.removeItemContainer}> <button onClick={(e)=>removeItem(e,item?.userId,item?._id)}>remove</button> </div>
                                     {index == cartItems.length - 1 ? <div>
-                                        <div>convenience fee : {rupeeSymbol}{45}</div>
+                                        <div className={style.fee}>convenience fee : {rupeeSymbol}{45}</div>
                                         <div className={style.totalAmount}>Total :{rupeeSymbol} {totalPrice + 45} </div>
                                     </div> : ""}
+                                    
                                 </div>
+                                
                             </div>
+                            
                         </div>))}
                 </div> }
 

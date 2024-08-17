@@ -16,6 +16,7 @@ export default function CartItems() {
     userId,
     setUserId,
     setNumOfCartItems,
+    numOfCartItems,
   } = useProductContext();
   const [numOfItems, setNumOfItems] = useState([]);
   const [total, setTotal] = useState(0);
@@ -28,11 +29,13 @@ export default function CartItems() {
 
   const GET_CART_ITEMS = "https://watchkart-be.onrender.com/api/get-cartitems/";
 
+  const REMOVE_CART_ITEM = 'https://watchkart-be.onrender.com/api/removeItem/'
+
   useEffect(() => {
     const id = localStorage.getItem("userId");
     setUserId(id)
     getCartItems();
-  }, []);
+  }, [numOfCartItems]);
 
   useEffect(() => {
     if (numOfItems.length > 0) {
@@ -60,6 +63,7 @@ export default function CartItems() {
 
     axios.get(GET_CART_ITEMS + id).then(
       (response) => {
+        console.log(response)
         if (response?.data?.success) {
           const cartItems = response?.data?.data;
           setLoader(false)
@@ -83,6 +87,26 @@ export default function CartItems() {
       }
     );
   };
+
+  const removeItem = (e,user,item)=>{
+       e.preventDefault();
+
+       axios.delete(REMOVE_CART_ITEM+user+'/'+item).then(
+         (response)=>{
+             if(response?.data?.success){
+              setNumOfCartItems(numOfCartItems - 1)
+               alert("item removed from cart")
+             }else{
+              alert("failed to remove item from cart")
+             }
+              
+         },(error)=>{
+             console.log(error)
+             alert("failed to remove item from cart")
+         }
+       )
+
+  }
 
   return (
     <div className={style.main}>
@@ -144,6 +168,11 @@ export default function CartItems() {
                       {item?.price * numOfItems[index]}
                     </div>
                   </div>
+
+                  <div className={style.removeItemContainer}>
+                <button onClick={(e)=>removeItem(e,item?.userId,item?._id)}>remove</button>
+              </div>
+
                 </div>
               </div>
             </div>
@@ -156,6 +185,7 @@ export default function CartItems() {
                 {item?.price * numOfItems[index]}
               </span>
             </div>
+
           </div>
           ))} 
       </div>}
