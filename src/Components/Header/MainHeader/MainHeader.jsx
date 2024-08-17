@@ -3,6 +3,7 @@ import phoneIcon from "../../../Assets/Icons/phone.png";
 import style from "./MainHeader.module.css";
 import useProductContext from "../../../Hooks/useProductContext";
 import { jwtDecode } from "jwt-decode";
+import { Link } from "react-router-dom";
 
 export default function () {
   const { Login, setLogin, setUserId } = useProductContext();
@@ -48,12 +49,12 @@ export default function () {
         </div>
       ) : (
         <div className={style.login_signup}>
-          <a href="/login" className={style.login}>
+          <Link to={"/login"} className={style.login}>
             Login |
-          </a>{" "}
-          <a href="/signup" className={style.signup}>
+          </Link>{" "}
+          <Link to={"/signup"} className={style.signup}>
             Signup
-          </a>
+          </Link>
         </div>
       )}
     </div>

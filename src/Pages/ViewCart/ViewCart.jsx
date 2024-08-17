@@ -45,27 +45,13 @@ export default function ViewCart() {
           <div className={style.homeContainer}>
             <div className={style.logoContainer}>
               <div className={style.logo}>WatchKart</div>
-              {/* <img
-                src={logo}
-                onClick={() => navigate("/")}
-                alt="Logo Here"
-                className={style.logo}
-              ></img> */}
+             
               <span onClick={() => navigate("/")} className={style.home}>
                 Home /
               </span>{" "}
               <span className={style.home}>view cart</span>
             </div>
-            {/* <div className={style.viewCartContainer}>
-              <button className={style.cartButton}>
-                <img
-                  src={cartIcon}
-                  alt="cart icon here"
-                  className={style.cartIcon}
-                ></img>{" "}
-                <span className={style.viewCart}>ViewCart</span>
-              </button>
-            </div> */}
+           
           </div>
         )}
 
