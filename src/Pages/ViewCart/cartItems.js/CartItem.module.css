@@ -13,10 +13,22 @@
     display: none; 
   }
 
+  .removeItemContainer{
+    margin-left: 1vw;
+  }
+
+  .removeItemContainer button{
+    background-color: rgb(201, 62, 62);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
 .productDetails{
     display: flex;
     margin-top: 2vh;
-    width: 50vw;
+    width: 60vw;
     height: 30vh;
     border-right: 1px solid gray;
     border-top: 1px solid gray;

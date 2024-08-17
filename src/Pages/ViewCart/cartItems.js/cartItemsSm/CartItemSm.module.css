@@ -4,6 +4,19 @@
 }
 
 
+.removeItemContainer{
+    margin-left: 1vw;
+  }
+
+  .removeItemContainer button{
+    background-color: rgb(201, 62, 62);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+
 .productDetails{
     display: flex;
     /* margin-top: 2vh; */
@@ -98,6 +111,11 @@
 .totalAmount{
     margin-top: 15vh;
     font-weight: 500;
+    padding-bottom: 3vh;
+}
+
+.fee{
+    padding-top: 1vh;
 }
 
 @media (max-width: 350px){
