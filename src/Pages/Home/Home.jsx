@@ -180,20 +180,15 @@ export default function Home() {
   }
 
   const getCartItems = async (id) => {
-    console.log(id)
     axios.get(GET_CART_ITEMS + id).then(
       (respones) => {
-        console.log("cart response is",respones)
         if (respones?.data?.success) {
           const cartItems = respones.data.data;
 
           setNumOfCartItems(cartItems?.length);
         }
       },
-      (error) => {
-        console.log("error is",error)
-        // alert("failed to get cart items");
-      }
+      (error) => {}
     );
   };
 
@@ -401,7 +396,6 @@ export default function Home() {
               ""
             ) : (
               <div>
-
                 <select
                   name="company"
                   id="company"

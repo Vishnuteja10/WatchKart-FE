@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Login.module.css";
 import logo from "../../Assets/Logo/logo.png";
 import Footer from "../../Components/Footer/Footer";
@@ -23,7 +23,6 @@ export default function Login() {
 
   const LOGIN = "https://watchkart-be.onrender.com/api/login";
 
-  
   const [loader, setLoader] = useState(false);
 
   useEffect(() => {
@@ -70,14 +69,12 @@ export default function Login() {
     e.preventDefault();
     setEmail(EMAIL);
     setPassword(PASSWORD);
-    // loginUser();
+    
   }
 
   return (
     <div className={styles.main}>
-
-      
-    <div className={styles.loader}>
+      <div className={styles.loader}>
         <ClipLoader
           color={"black"}
           loading={loader}
@@ -85,14 +82,12 @@ export default function Login() {
         />
       </div>
 
-
       {isMobile ? <Header /> : ""}
       <div className={styles.outerBox}>
         {isMobile ? (
           <h1 className={styles.welcome}>Welcome</h1>
         ) : (
           <div className={styles.logoContainer}>
-            {/* <img className={styles.logo} src={logo} alt="Logo Here"></img> */}
             <div className={styles.logo}> WatchKart </div>
           </div>
         )}
@@ -162,8 +157,8 @@ export default function Login() {
           </button>
         </div>
         <span className={styles.guestUser} onClick={defaultLogin}>
-            "Click here to Sign in as Guest user"
-          </span>
+          "Click here to Sign in as Guest user"
+        </span>
       </div>
       <div className={styles.footer}>
         <Footer />
