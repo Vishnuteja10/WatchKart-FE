@@ -1,0 +1,30 @@
+
+.header{
+    width: 100vw;
+    height: 5vh;
+    display: flex;
+    background-color: #2E0052;
+}
+
+.logoContainer{
+    display: flex;
+    align-items: center;
+}
+.logo{
+    margin-left: 20px;
+    color: white;
+    padding-top: 10px;
+}
+
+
+@media (max-width: 700px){
+    .header{
+      height: 7vh;
+    }
+
+    .logo{
+      /* margin-top: 1px; */
+      height: 5vh;
+      width: 5vw;
+    }
+}
