@@ -25,7 +25,7 @@ import { ClipLoader } from "react-spinners";
 export default function Home() {
   const isMobile = useMediaQuery({ query: "(max-width: 800px)" });
 
-  let GET_PRODUCTS = "https://watchkart-be.onrender.com/api/products";
+  const GET_PRODUCTS = "https://watchkart-be.onrender.com/api/products";
 
   const GET_CART_ITEMS = "https://watchkart-be.onrender.com/api/get-cartitems/";
 
@@ -107,18 +107,12 @@ export default function Home() {
     }
   }, []);
 
+  // Create query url based on filters applied
   function getUrl() {
     if (searchItem.length > 0) {
       queryParams.append("searchItem", searchItem);
     }
 
-    if (type !== "headphone") {
-      if (type == "featured") {
-        queryParams.append(featuredParam, true);
-      } else {
-        queryParams.append(headphoneType, type);
-      }
-    }
 
     if (company !== "company") {
       if (company == "featured") {
@@ -183,7 +177,7 @@ export default function Home() {
     axios.get(GET_CART_ITEMS + id).then(
       (respones) => {
         if (respones?.data?.success) {
-          const cartItems = respones.data.data;
+          const cartItems = respones?.data?.data;
 
           setNumOfCartItems(cartItems?.length);
         }
@@ -192,6 +186,7 @@ export default function Home() {
     );
   };
 
+  // fetching products data based on applied filters
   const fetchData = async () => {
     const queryUrl = getUrl();
 
@@ -226,7 +221,6 @@ export default function Home() {
           ) : (
             <div className={style.homeContainer}>
               <div className={style.logoContainer}>
-                {/* <img src={logo} alt="Logo Here" className={style.logo}></img> */}
                 <div className={style.logo}> WatchKart </div>
                 <span className={style.home}>Home</span>
               </div>

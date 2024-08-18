@@ -27,7 +27,8 @@ export default function ProductDetails() {
     setTotalPrice,
     Login,
     setLogin,
-    numOfCartItems,setNumOfCartItems
+    numOfCartItems,
+    setNumOfCartItems
   } = useProductContext();
   const { id } = useParams();
   const navigate = useNavigate();
@@ -63,21 +64,21 @@ export default function ProductDetails() {
     const token = localStorage.getItem("token");
 
     const headers = {
-      token: token,
+      token: token
     };
 
     axios
       .post(
         ADD_TO_CART,
         {
-          item: updatedItem,
+          item: updatedItem
         },
         { headers }
       )
       .then(
         (respones) => {
           if (respones?.data?.success) {
-            setNumOfCartItems(numOfCartItems+1)
+            setNumOfCartItems(numOfCartItems + 1);
             alert("item added to cart");
           } else {
             alert("failed to add item to cart");
@@ -115,7 +116,7 @@ export default function ProductDetails() {
             <div className={style.homeContainer}>
               <div className={style.logoContainer}>
                 <div className={style.logo}>WatchKart</div>
-              
+
                 <span onClick={() => navigate("/")} className={style.home}>
                   Home /
                 </span>

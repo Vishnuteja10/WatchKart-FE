@@ -37,9 +37,7 @@ export default function SignUp() {
           navigate("/");
         }
       },
-      (error) => {
-
-      }
+      (error) => {}
     );
   };
 
@@ -79,9 +77,7 @@ export default function SignUp() {
           <h3 className={styles.welcome}>Welcome</h3>
         ) : (
           <div className={styles.logoContainer}>
-            <div className={styles.logo}>
-                 WatchKart
-                 </div>
+            <div className={styles.logo}>WatchKart</div>
           </div>
         )}
         <div className={styles.login}>
@@ -141,8 +137,8 @@ export default function SignUp() {
               </div>
               <p className={styles.privacyNotice}>
                 By enrolling your mobile phone number, you consent to receive
-                automated security notifications via text message from WatchKart.
-                Message and data rates may apply.
+                automated security notifications via text message from
+                WatchKart. Message and data rates may apply.
               </p>
               <div>
                 <button className={styles.continue} onClick={register}>

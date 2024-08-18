@@ -24,7 +24,7 @@ export default function ViewCart() {
     isCartEmpty,
     setHome,
     setCart,
-    setloginItem,
+    setloginItem
   } = useProductContext();
 
   const navigate = useNavigate();
@@ -45,13 +45,11 @@ export default function ViewCart() {
           <div className={style.homeContainer}>
             <div className={style.logoContainer}>
               <div className={style.logo}>WatchKart</div>
-             
               <span onClick={() => navigate("/")} className={style.home}>
                 Home /
               </span>{" "}
               <span className={style.home}>view cart</span>
             </div>
-           
           </div>
         )}
 

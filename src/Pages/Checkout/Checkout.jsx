@@ -37,7 +37,6 @@ export default function Checkout() {
                         <div className={style.homeContainer}>
                             <div className={style.logoContainer}>
                                 <div className={style.logo}>WatchKart</div>
-                                {/* <img src={logo} alt="Logo Here" className={style.logo}></img> */}
                                 <span className={style.home} onClick={() => {
                                     navigate("/");
                                 }} >Home /</span><span className={style.home}>checkout</span>

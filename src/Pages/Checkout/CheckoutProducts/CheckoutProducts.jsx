@@ -23,7 +23,7 @@ export default function CheckoutProducts() {
         axios.get(GET_CART_ITEMS + id).then(
             (respones) => {
                 if (respones?.data?.success) {
-                    setCartItems(respones.data.data);
+                    setCartItems(respones?.data?.data);
                 }
             },
             (error) => {
